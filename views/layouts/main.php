@@ -11,6 +11,7 @@ use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\assets\IeAppAsset;
 use yii\helpers\Url;
+use yii\bootstrap\Modal;
 
 AppAsset::register($this);
 IeAppAsset::register($this);
@@ -26,7 +27,7 @@ IeAppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="/images/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="web/images/ico/apple-touch-icon-144-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="web/images/ico/apple-touch-icon-114-precomposed.png">
@@ -101,7 +102,7 @@ IeAppAsset::register($this);
 								<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
 								<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="#" onclick="return getCart()"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>
@@ -147,7 +148,9 @@ IeAppAsset::register($this);
 					</div>
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
-							<input type="text" placeholder="Search"/>
+              <form action="<?= \yii\helpers\Url::to(['category/search'])?>" method="get">
+							     <input type="text" placeholder="Search" name="q"/>
+              </form>
 						</div>
 					</div>
 				</div>
@@ -315,6 +318,18 @@ IeAppAsset::register($this);
 
 	</footer><!--/Footer-->
 
+  <!-- подключ виджет Корзина -->
+  <?php
+  Modal::begin([
+    'header' => '<h2>Корзина</h2>',
+    'id'     => 'cart',
+    'size'   => 'modal-lg',
+    'footer' => '<button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
+                 <a href="' . \yii\helpers\Url::to(['cart/view']) . '" class="btn btn-success">Оформить заказ</a>
+                 <button type="button" class="btn btn-danger" onclick="clearCart()">Очистить корзину</button>'
+  ]);
+  Modal::end();
+  ?>
 <?php $this->endBody() ?>
 </body>
 </html>

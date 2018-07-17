@@ -31,10 +31,14 @@ class AppAsset extends AssetBundle
     public $js = [
           // 'js/jquery.js',
         	// 'js/bootstrap.min.js',
-        	'js/jquery.scrollUp.min.js',
-        	'js/price-range.js',
+          'js/jquery.scrollUp.min.js',
+          'js/price-range.js',
           'js/jquery.prettyPhoto.js',
-          'js/main.js',
+          'js/jquery.cookie.js',
+          'js/jquery.accordion.js',
+          'js/salvattore.min.js',
+          'js/main.js'
+
     ];
     public $depends = [
         'yii\web\YiiAsset',

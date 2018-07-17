@@ -21,8 +21,8 @@ class IeAppAsset extends AssetBundle
   public $baseUrl = '@web';
 
   public $js = [
-    'html5shiv.js',
-    'respond.min.js',
+    'js/html5shiv.js',
+    'js/respond.min.js',
   ];
 
   public $jsOptions = [

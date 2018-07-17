@@ -15,7 +15,7 @@ class Category extends ActiveRecord
 
   public function getProducts()
   {
-    //связь с табл Продукт в БД. 2 парметра. И созд одель Продукт
+    //связь с табл Продукт в БД. 2 парметра. И созд отдель Продукт
     return $this->hasMany(Product::className(), [
       'category_id' => 'id',
     ]);

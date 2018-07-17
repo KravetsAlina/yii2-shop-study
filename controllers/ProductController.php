@@ -9,7 +9,19 @@ class ProductController extends AppController
 {
   public function actionView($id)
   {
-    $id = Yii::$app->request->get('id');
+    //получ из масива гет либо параметром в этой ф-ции
+    // $id = Yii::$app->request->get('id');
+
+    //исключение. Пользователь запрашивает несуществ id категории
+    //получ из БД всю инфо по данному товару
+    //ленивая загрузка
+    $product = Product::findOne($id);
+
+    if(empty($product))
+    {
+      throw new \yii\web\HttpException(404, 'Такого товара не существует');
+    }
+
     //получ из БД всю инфо по данному товару
     //ленивая загрузка
     $product = Product::findOne($id);
@@ -22,4 +34,6 @@ class ProductController extends AppController
       $this->setMeta('E-SHOPPER | ' . $product->name, $product->keywords, $product->description);
     return $this->render('view', compact('product', 'hits'));
   }
+
+  
 }

@@ -8,6 +8,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'language'  => 'ru-RU',
+
     //путь по умолчанию
      'defaultRoute' => 'category/index',
     'aliases' => [
@@ -18,6 +19,7 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => '12345',
+            'baseUrl'=> '',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -34,7 +36,15 @@ $config = [
             // send all mails to a file by default. You have to set
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
-            'useFileTransport' => true,
+            'useFileTransport' => false,
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com',
+                'username' => 'alinakravets2017@gmail.com',
+                'password' => 'reserved34sad',
+                'port' => '465',
+                'encryption' => 'ssl',
+            ],
         ],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
@@ -54,6 +64,7 @@ $config = [
               'category/<id:\d+>/page/<page:\d+>'=>'category/view',
               'category/<id:\d+>'=>'category/view',
               'product/<id:\d+>'=>'product/view',
+              'search'=>'category/search',
             ],
         ],
 

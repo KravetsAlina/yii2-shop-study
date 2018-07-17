@@ -56,7 +56,7 @@ use yii\helpers\Url;
 				<div class="col-sm-9 padding-right">
           <?php if(!empty($products)): ?>
 					<div class="features_items"><!--features_items-->
-						<h2 class="title text-center"><?php $category->name ?></h2>
+						<h2 class="title text-center">Поиск по запросу: <?= Html::encode($q) ?></h2>
             <?php $i = 0; foreach($products as $product): ?>
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
@@ -67,13 +67,6 @@ use yii\helpers\Url;
 										<p><a href="<?=\yii\helpers\Url::to(['product/view', 'id' => $product->id]) ?>"><?=$product->name?></a></p>
 										<a href="#" data-id="<?=$product->id?>" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
-									<!-- <div class="product-overlay">
-										<div class="overlay-content">
-											<h2>$56</h2>
-											<p>Easy Polo Black Edition</p>
-											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-										</div>
-									</div> -->
                   <?php if($product->new): ?>
                     <?= Html::img("@web/images/home/new.png",['alt'=>'новинка', 'class'=>'new']) ?>
                   <?php endif; ?>
@@ -101,7 +94,7 @@ use yii\helpers\Url;
             ]);
             ?>
             <?php else: ?>
-              <h2>Товаров в данной категории не обнаружено</h2>
+              <h2>Ничего не найдено</h2>
             <?php endif; ?>
 
 
