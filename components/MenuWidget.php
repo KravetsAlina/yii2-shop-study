@@ -16,6 +16,7 @@ class MenuWidget extends Widget
   public $tree;
   //готовый код в зависимости от свойства $tpl
   public $menuHtml;
+  //переменная из category _form.php MenuWidget
   public $model;
 
   public function init()
@@ -65,6 +66,7 @@ class MenuWidget extends Widget
   }
 
   //add to html
+  //отступ в списке категории
   protected function getMenuHtml($tree, $tab = '')
   {
     $str = '';

@@ -47,6 +47,13 @@ use app\controllers\CategoryController;
         </div>
       </div>
 
+<?php
+$mainImg = $product->getImage();
+$gallery = $product->getImages();
+
+?>
+
+
       <div class="col-sm-9 padding-right">
         <div class="product-details"><!--product-details-->
           <div class="col-sm-5">
@@ -111,6 +118,7 @@ use app\controllers\CategoryController;
               <p><b>Availability:</b> In Stock</p>
               <p><b>Brand:</b><a href="<?=\yii\helpers\Url::to(['category/view', 'id' => $product->id]) ?>"><?=$product->name?></a></p>
               <a href=""><img src="/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+              <?= $product->content; ?>
             </div><!--/product-information-->
           </div>
 

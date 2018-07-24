@@ -7,6 +7,15 @@ use yii\db\ActiveRecord;
 class Product extends ActiveRecord
 {
 
+  public function behaviors()
+   {
+       return [
+           'image' => [
+               'class' => 'rico\yii2images\behaviors\ImageBehave',
+           ]
+       ];
+   }
+
   //связь табл и модели
   public static function tableName()
   {
